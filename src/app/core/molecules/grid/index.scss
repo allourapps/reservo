@@ -1,0 +1,139 @@
+$main-padding : 0.5;
+$extra-slim-padding : $main-padding / 3;
+column {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    &.grow {
+        flex-grow: 1;
+    }
+
+    &.noGrow {
+        flex-grow: 0;
+    }
+
+    &.shrink {
+        flex-shrink: 1;
+    }
+
+    &.noShrink {
+        flex-shrink: 0;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+    }
+
+    &.vertical {
+        flex-direction: column;
+    }
+
+    &.jCenter {
+        justify-content: center;
+    }
+
+    &.aCenter {
+        align-items: center;
+    }
+
+    &.jStart {
+        justify-content: flex-start;
+    }
+
+    &.aStart {
+        align-items: flex-start;
+    }
+
+    &.jEnd {
+        justify-content: flex-end;
+    }
+
+    &.aEnd {
+        align-items: flex-end;
+    }
+}
+
+row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    &.grow {
+        flex-grow: 1;
+    }
+    &.noGrow {
+        flex-grow: 0;
+    }
+
+    &.shrink {
+        flex-shrink: 1;
+    }
+
+    &.noWrap {
+        flex-wrap: nowrap;
+    }
+
+    &.noShrink {
+        flex-shrink: 0;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+    }
+
+    &.vertical {
+        flex-direction: column;
+    }
+
+    &.jCenter {
+        justify-content: center;
+    }
+
+    &.aCenter {
+        align-items: center;
+    }
+
+    &.jStart {
+        justify-content: flex-start;
+    }
+
+    &.aStart {
+        align-items: flex-start;
+    }
+
+    &.jEnd {
+        justify-content: flex-end;
+    }
+
+    &.aEnd {
+        align-items: flex-end;
+    }
+
+    &.overflowX {
+        overflow: auto;
+    }
+
+    &.slim {
+        margin-left: -$main-padding + rem;
+        margin-right: -$main-padding + rem;
+        column {
+            padding-left: $main-padding + rem;
+            padding-right: $main-padding + rem;
+        }
+    }
+
+    &.xSlim {
+        margin-left: -$extra-slim-padding + rem;
+        margin-right: -$extra-slim-padding + rem;
+        column {
+            padding-left: $extra-slim-padding + rem;
+            padding-right: $extra-slim-padding + rem;
+        }
+    }
+}

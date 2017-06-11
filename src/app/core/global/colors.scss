@@ -1,0 +1,196 @@
+// --- Variables
+
+$color-step: 15% !global;
+// Base Colors
+// Use these for charts, flow text colorization and background fills for icons.
+// If a color does not exist and is needed, consult with design/webteam first before adding.
+
+$white:             #ffffff !default;
+
+$green:             #b6cd48 !default;
+$green-dark:        #349933 !default;
+$green-light:       #D4DF31 !default;
+
+$yellow:            #FFEB3B !default;
+$yellow-dark:       #FDD835 !default;
+$yellow-light:      #FFEE58 !default;
+
+$orange:            #FFAA27 !default;
+$orange-dark:       #bf6400 !default;
+$orange-light:      #ffb742 !default;
+
+$red:               #eF2545 !default;
+$red-dark:          #ba0e29 !default;
+$red-light:         #f46c82 !default;
+
+$blue:              #52ABE1 !default;
+$blue-dark:         #3776A5 !default;
+$blue-light:        #93cbec !default;
+
+$purple:            #BA37a9 !default;
+$purple-dark:       #79096b !default;
+$purple-light:      #e84fd4 !default;
+
+$pink:              #F92A8E !default;
+$pink-dark:         #d10668 !default;
+$pink-light:        #fb74b5 !default;
+
+
+// Gray Base Colors
+$gray:              #cecece !default;
+$gray-dark:         #ADADAD !default;
+$gray-light:        #ECECEC !default;
+$gray-alt:          #c6c6c6 !default;
+
+
+// Dirty Designer Colors
+$gray-xlight:       #F9F9F9 !default;
+
+
+// Named Colors
+// Use these in 99% cases. There should be no need for variations if none are provided.
+
+$app-color:        #F6F6F6 !default;
+$background-color: white !default;
+$alt-color:        #F8F8F8 !default;
+$text-color:       #5A5A5A !default;
+
+$primary-color:    $blue !default;
+$secondary-color:  $blue-dark !default;
+$dark-color:       #474747 !default;
+
+$border-color:     $gray-light !default;
+$input-color:      #F8F8F8 !default;
+$label-color:      #787878 !default;
+
+$highlight-color:  $green !default;
+
+$success-color:    $green !default;
+$alert-color:      $red !default;
+$warning-color:    $orange !default;
+$info-color:       $primary-color !default;
+
+$light-text-color:   #9B9B9B !default;
+$softText-color:   #878787 !default;
+$hardText-color:   #1d1d1d !default;
+
+// ----- Color Maps -----
+
+// Named Colors
+$named-colors: (
+    app: $app-color,
+    background: $background-color,
+    text: $text-color,
+
+    primary: $primary-color,
+    secondary: $secondary-color,
+    dark: $dark-color,
+
+    border: $border-color,
+    input: $input-color,
+    label: $label-color,
+
+    highlight: $highlight-color,
+
+    success: $success-color,
+    warning: $warning-color,
+    alert: $alert-color,
+    info: $info-color,
+    disabled: $gray
+) !default;
+
+// Base Colors
+$base-colors: (
+    green: $green,
+    greenDark: $green-dark,
+    greenLight: $green-light,
+    yellow: $yellow,
+    yellowDark: $yellow-dark,
+    yellowLight: $yellow-light,
+    orange: $orange,
+    orangeLight: $orange-light,
+    orangeDark: $orange-dark,
+    red: $red,
+    redLight: $red-light,
+    redDark: $red-dark,
+    blue: $blue,
+    blueLight: $blue-light,
+    blueDark: $blue-dark,
+    purple: $purple,
+    purpleLight: $purple-light,
+    purpleDark: $purple-dark,
+    pink: $pink,
+    pinkLight: $pink,
+    pinkDark: $purple-dark,
+    gray: $gray,
+    grayLight: $gray-light,
+    grayDark: $gray-dark,
+    grayXlight: $gray-xlight
+) !default;
+
+// State Colors
+$state-names: (info warning alert success disabled) !default;
+$state-colors: (
+    info: $info-color,
+    warning: $warning-color,
+    alert: $alert-color,
+    success: $success-color,
+    disabled: $gray,
+) !default;
+
+// Theme Colors
+$theme-names: (primary, secondary, dark, highlight) !default;
+$theme-colors: (
+    primary: $primary-color,
+    secondary: $secondary-color,
+    dark: $dark-color,
+    highlight: $highlight-color
+) !default;
+
+$state-and-theme-names: join($state-names, $theme-names);
+$state-and-theme-colors: map-merge($state-colors, $theme-colors);
+
+// --- Color Functions
+
+// Color Generation Helper
+@function dark($color) {
+    @return darken($color, $color-step);
+}
+
+@function light($color) {
+    @return lighten($color, $color-step);
+}
+
+// Is It Light?
+// Checks the lightness of $color, and if it passes the $threshold of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color.
+// Use this function to dynamically output a foreground color based on a given background color.
+//
+// @param {color} $color - Color to check the lightness of.
+// @param {color} $yes - Color to return if $color is light.
+// @param {color} $no - Color to return if $color is dark.
+// @param {percentage} $threshold - Threshold of lightness to check against.
+//
+// @return The $yes color or $no color.
+@function isitlight($color, $yes: #000, $no: #fff, $threshold: 60%) {
+    @if (lightness($color) > $threshold) {
+        @return $yes;
+    }
+    @else {
+        @return $no;
+    }
+}
+
+// Smart Scale
+// Scales a color to be lighter if it's light, or darker if it's dark. Use this function to "fade" a color appropriate to its lightness.
+//
+// @param {color} $color - Color to scale.
+// @param {percentage} $scale - Amount to scale up or down.
+// @param {percentage} $threshold - Threshold of lightness to check against.
+//
+// @return A scaled color.
+@function smartscale($color, $scale: 5%, $threshold: 60%) {
+    @if lightness($color) > $threshold {
+        $scale: -$scale;
+    }
+    @return scale-color($color, $lightness: $scale);
+}

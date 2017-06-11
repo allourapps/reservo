@@ -1,0 +1,319 @@
+// Flexbox Mixins
+// http://philipwalton.github.io/solved-by-flexbox/
+// https://github.com/philipwalton/solved-by-flexbox
+//
+// Copyright (c) 2013 Brian Franco
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+@mixin flexbox {
+    display: flex;
+}
+
+%flexbox {
+    @include flexbox;
+}
+//----------------------------------
+@mixin inline-flex {
+    display: inline-flex;
+}
+
+%inline-flex {
+    @include inline-flex;
+}
+@mixin flex-direction($value: row) {
+    flex-direction: $value;
+}
+// Shorter version:
+
+@mixin flex-dir($args...) {
+     @include flex-direction($args...);
+}
+//----------------------------------------------------------------------
+@mixin flex-wrap($value: nowrap) {
+    flex-wrap: $value;
+}
+//----------------------------------------------------------------------
+// Flexbox Flow (shorthand)
+//
+// The 'flex-flow' property is a shorthand for setting the 'flex-direction'
+// and 'flex-wrap' properties, which together define the flex container's
+// main and cross axes.
+//
+// Values: <flex-direction> | <flex-wrap>
+// Default: row nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-flow-property
+@mixin -ms-flex($int: 0) {
+    -ms-flex: $int;
+}
+@mixin flex-flow($values: (row nowrap)) {
+    flex-flow: $values;
+}
+@mixin order($int: 0) {
+    order: $int;
+}
+@mixin flex-grow($int: 0) {
+    flex-grow: $int;
+}
+@mixin flex-shrink($int: 1) {
+    flex-shrink: $int;
+}
+@mixin flex-basis($value: auto) {
+    flex-basis: $value;
+}
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    // Set a variable to be used by box-flex properties
+    $fg-boxflex: $fg;
+    // Box-Flex only supports a flex-grow value so let's grab the
+    // first item in the list and just return that.
+    @if type-of($fg) == 'list' {
+        $fg-boxflex: nth($fg, 1);
+    }
+    flex: $fg $fs $fb;
+}
+@mixin justify-content($value: flex-start) {
+    justify-content: $value;
+}
+// Shorter version:
+@mixin flex-just($args...) {
+     @include justify-content($args...);
+}
+@mixin align-items($value: stretch) {
+    align-items: $value;
+}
+@mixin align-self($value: auto) {
+    align-self: $value;
+}
+@mixin align-content($value: stretch) {
+    align-content: $value;
+}
+//
+// -- Start editing -- //
+//
+// Set the number of columns you want to use on your layout.
+$grid-columns: 12 !default; // Set the gutter between columns.
+$gutter-width: 2rem !default; // Set a margin for the container sides.
+$outer-margin: 2rem !default; // Create or remove breakpoints for your project
+// Syntax:
+// name SIZErem,
+$breakpoints: sm 48em 46rem, md 62em 61rem, lg 75em 71rem !default;
+$flexboxgrid-max-width: 1200px !default;
+//
+// -- Stop editing -- //
+//
+$gutter-compensation: $gutter-width * 0.5 * -1;
+$half-gutter-width: $gutter-width * 0.5;
+
+.wrapper {
+    box-sizing: border-box;
+    // max-width: $flexboxgrid-max-width;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $outer-margin;
+    padding-left: $outer-margin;
+}
+
+.row {
+    box-sizing: border-box;
+    @include flexbox();
+    @include flex(0, 1, auto);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    margin-right: $gutter-compensation;
+    margin-left: $gutter-compensation;
+}
+
+.row.reverse {
+    @include flex-direction(row-reverse);
+}
+
+.col.reverse {
+    @include flex-direction(column-reverse);
+}
+@mixin flexboxgrid-sass-col-common {
+    box-sizing: border-box;
+    // split @include flex(0, 0, auto) into individual props
+    @include flex-grow(0);
+    @include flex-shrink(0);
+    // we leave @include flex-basis(auto) out of common because
+    // in some spots we need it and some we dont
+    // more why here: https://github.com/kristoferjoseph/flexboxgrid/issues/126
+    padding-right: $half-gutter-width;
+    padding-left: $half-gutter-width;
+}
+$name: xs;
+
+.col-#{$name} {
+    @include flexboxgrid-sass-col-common;
+    @include flex-basis(auto);
+}
+@for $i from 1 through $grid-columns {
+    .col-#{$name}-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        @include flex-basis(100% / $grid-columns * $i);
+        max-width: (100% / $grid-columns * $i)
+        // max-width: 100% / $grid-columns * $i;
+    }
+}
+@for $i from 0 through $grid-columns {
+    .col-#{$name}-offset-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        @if $i == 0 {
+            margin-left: 0;
+        }
+        @else {
+            margin-left: 100% / $grid-columns * $i;
+        }
+    }
+}
+
+.col-#{$name} {
+    @include flex-grow(1);
+    @include flex-basis(0);
+    // max-width: 100%;
+}
+
+.start-#{$name} {
+    @include justify-content(flex-start);
+    text-align: start;
+}
+
+.center-#{$name} {
+    @include justify-content(center);
+    text-align: center;
+}
+
+.end-#{$name} {
+    @include justify-content(flex-end);
+    text-align: end;
+}
+
+.top-#{$name} {
+    @include align-items(flex-start);
+}
+
+.middle-#{$name} {
+    @include align-items(center);
+}
+
+.bottom-#{$name} {
+    @include align-items(flex-end);
+}
+
+.around-#{$name} {
+    @include justify-content(space-around);
+}
+
+.between-#{$name} {
+    @include justify-content(space-between);
+}
+
+.first-#{$name} {
+    order: -1;
+}
+
+.last-#{$name} {
+    order: 1;
+}
+@each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+    $container: nth($breakpoint, 3);
+    @media only screen and (min-width: $size) {
+        .container {
+            width: $container;
+        }
+
+        .col-#{$name} {
+            @include flexboxgrid-sass-col-common;
+            @include flex-basis(auto);
+        }
+        @for $i from 1 through $grid-columns {
+            .col-#{$name}-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                @include flex-basis(100% / $grid-columns * $i);
+                max-width: (100% / $grid-columns * $i);
+                // max-width: 100% / $grid-columns * $i;
+            }
+        }
+        @for $i from 0 through $grid-columns {
+            .col-#{$name}-offset-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                @if $i == 0 {
+                    margin-left: 0;
+                }
+                @else {
+                    margin-left: 100% / $grid-columns * $i;
+                }
+            }
+        }
+
+        .col-#{$name} {
+            @include flex-grow(1);
+            @include flex-basis(0);
+            //   max-width: 100%;
+        }
+
+        .start-#{$name} {
+            @include justify-content(flex-start);
+            text-align: start;
+        }
+
+        .center-#{$name} {
+            @include justify-content(center);
+            text-align: center;
+        }
+
+        .end-#{$name} {
+            @include justify-content(flex-end);
+            text-align: end;
+        }
+
+        .top-#{$name} {
+            @include align-items(flex-start);
+        }
+
+        .middle-#{$name} {
+            @include align-items(center);
+        }
+
+        .bottom-#{$name} {
+            @include align-items(flex-end);
+        }
+
+        .around-#{$name} {
+            @include justify-content(space-around);
+        }
+
+        .between-#{$name} {
+            @include justify-content(space-between);
+        }
+
+        .first-#{$name} {
+            order: -1;
+        }
+
+        .last-#{$name} {
+            order: 1;
+        }
+    }
+}

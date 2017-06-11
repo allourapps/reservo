@@ -1,0 +1,43 @@
+// ----------------------------- Global Variables --------------------------- //
+
+// This sets 1rem to be 12px
+$rem-base: 12px;
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with browser-based text zoom or user-set defaults.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be different and not have it affect the grid breakpoints,
+// set $rem-base to $base-font-size and make sure $base-font-size is a px value.
+$base-font-size: 100% !default;
+
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 1.5 !default;
+
+// We use these to define default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 4px !default;
+$global-rounded: 1000px !default;
+
+// We use this for default spacing
+$global-padding: 1rem !default;
+$global-spacing: $global-padding !default;
+
+// margin values
+$global-margin: 2rem !default;
+
+
+$golden-ratio: 1.618 !global;
+$silver-ratio: 1.272 !global;
+
+$base-shadow: 0 1px 4px rgba(0,0,0,.2) !global;
+$base-shadow-raised: 0 1px 3px 1px rgba(0,0,0,.6) !global;
+$base-border-radius: 1px !global;
+
+// selects,options related colors
+$option-selected-color: #e6e6e6 !default;
+$option-focused-color: #F9F9F9  !default;
+$select-value-bg-color: #F7F7F7 !default;

@@ -1,0 +1,35 @@
+@import "~global/colors.scss";
+
+text {
+    display: block;
+    box-sizing: border-box;
+    font-size: 1.3rem;
+    margin: 0;
+    color: $text-color;
+    text-align: left;
+    &.truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &.singleLine {
+            white-space: nowrap;
+        }
+        &.twoLines {
+            display: -webkit-box;
+            -moz-box-orient: vertical;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            box-orient: vertical;
+            overflow: hidden;
+            word-break: break-all;
+        }
+        &.threeLines {
+            display: -webkit-box;
+            -moz-box-orient: vertical;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            box-orient: vertical;
+            overflow: hidden;
+            word-break: break-all;
+        }
+    }
+}

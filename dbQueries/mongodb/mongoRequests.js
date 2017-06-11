@@ -17,7 +17,7 @@ mongoose.connection.on("error", err => {
 const mongo = {
 
     addUser : (data, next) => {
-
+        next(null, {status : "OK"});
     },
 
     findUser : () => {

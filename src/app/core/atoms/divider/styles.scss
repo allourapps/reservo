@@ -1,0 +1,13 @@
+@import "~global/colors.scss";
+
+hr {
+    background: $border-color;
+    height: 1px;
+    border: none;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-height: 1px;
+    min-height: 1px;
+}
