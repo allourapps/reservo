@@ -4,7 +4,7 @@ const config = require("../../config");
 const {UserModel} = require("./mongoModels");
 mongoose.Promise = Promise;
 
-mongoose.connect(config.mainMongo.url);
+mongoose.connect(config.mainMongo.url, config.mainMongo.options);
 
 mongoose.connection.on("connected", () => {
     console.log("MongoDB is connected");
@@ -20,9 +20,9 @@ const mongo = {
         next(null, {status : "OK"});
     },
 
-    findUser : () => {
-
-
+    findUser : (username, next) => {
+        UserModel.findOne({username}, null, {lean : true})
+          .then(doc => next(null, doc), err => next(err))
 
     }
 
