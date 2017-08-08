@@ -24,6 +24,11 @@ const mongo = {
         UserModel.findOne({username}, null, {lean : true})
           .then(doc => next(null, doc), err => next(err))
 
+    },
+
+    updateToken : (username, token, next) => {
+        UserModel.update({username}, {$set : {token}})
+            .then(doc => next(null), err => next(err));
     }
 
 };
