@@ -1,0 +1,1 @@
+import React from 'react'; const ArrowRight = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><polygon points="6.154,3.736 5.016,4.757 7.104,7.087 5.016,9.416 6.154,10.437 9.157,7.087"/></svg>; export default ArrowRight;

@@ -1,0 +1,1 @@
+import React from 'react'; const Minus = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><g><rect width="6.274" height="1.507" x="3.95" y="6.333"/></g></svg>; export default Minus;

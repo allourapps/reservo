@@ -1,0 +1,1 @@
+import React from 'react'; const Burger = (props) => <svg {...props} viewBox="0 0 20 14"><g><g><g><rect width="20" height="2"/><rect width="20" height="2" y="6"/><rect width="20" height="2" y="12"/></g></g></g></svg>; export default Burger;

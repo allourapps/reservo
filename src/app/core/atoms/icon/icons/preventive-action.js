@@ -1,0 +1,1 @@
+import React from 'react'; const PreventiveAction = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M17,18 L13.001,4 L10.999,4 L8.999,11 L12,11 L12,14 L8.142,14 L6.999,18 L6.007,18 C5.45,18 5,18.448 5,19 C5,19.556 5.451,20 6.007,20 L17.993,20 C18.55,20 19,19.552 19,19 C19,18.444 18.549,18 17.993,18 L17,18 Z"/></g></g></svg>; export default PreventiveAction;

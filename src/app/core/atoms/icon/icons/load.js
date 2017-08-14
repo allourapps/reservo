@@ -1,0 +1,1 @@
+import React from 'react'; const Load = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><rect width="12" height="6" x="6" y="14" rx="1"/><polygon points="12.00015 12.9999 17.70695 7.29990019 16.29295 5.87990011 12.99995 9.17989983 12.99995 3 10.99995 3 10.99995 9.17989983 7.70695 5.87990011 6.29295 7.29990019"/></g></g></svg>; export default Load;

@@ -1,0 +1,1 @@
+import React from 'react'; const House = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="6.00058581 10.9998 6 11 6 19.9998 11 19.9998 11 16.0009 13 16.0009 13 19.9998 18 19.9998 18 11 17.9994142 10.9998 18.0027466 10.9998 12.0003 4.9998 6.0003 10.9998"/></g></g></svg>; export default House;

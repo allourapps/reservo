@@ -1,0 +1,1 @@
+import React from 'react'; const Remark = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="5 9 11 9 11 7 5 7"/><polygon points="5 13 19 13 19 10.999 5 10.999"/><polygon points="5 17 11 17 11 15 5 15"/><polygon points="13 9 19 9 19 7 13 7"/></g></g></svg>; export default Remark;

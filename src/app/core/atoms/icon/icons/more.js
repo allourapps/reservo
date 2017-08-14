@@ -1,0 +1,1 @@
+import React from 'react'; const More = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><rect width="4" height="4" x="10" y="4" rx="2"/><rect width="4" height="4" x="10" y="10" rx="2"/><rect width="4" height="4" x="10" y="16" rx="2"/></g></g></svg>; export default More;

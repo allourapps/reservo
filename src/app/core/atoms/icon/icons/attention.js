@@ -1,0 +1,1 @@
+import React from 'react'; const Attention = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M12,4 C16.418,4 20,7.582 20,12 C20,16.418 16.418,20 12,20 C7.582,20 4,16.418 4,12 C4,7.582 7.582,4 12,4 Z M11,12 L13,12 L13,7 L11,7 L11,12 Z M11,16 L13,16 L13,14 L11,14 L11,16 Z"/></g></g></svg>; export default Attention;

@@ -1,0 +1,1 @@
+import React from 'react'; const Spill = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M11,13 L13,13 L13,9 L11,9 L11,13 Z M11,17 L13,17 L13,15 L11,15 L11,17 Z M12,3 C12,3 5,9.312 5,14 C5,17.866 8.134,21 12,21 C15.866,21 19,17.866 19,14 C19,9.312 12,3 12,3 L12,3 Z"/></g></g></svg>; export default Spill;

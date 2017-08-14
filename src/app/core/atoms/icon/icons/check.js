@@ -1,0 +1,1 @@
+import React from 'react'; const Check = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="6.72238676 11.2941373 5.30568941 12.7058627 9.99864802 17.4153494 18.7069989 8.70965609 17.2930011 7.29522672 10.001352 14.5846506"/></g></g></svg>; export default Check;

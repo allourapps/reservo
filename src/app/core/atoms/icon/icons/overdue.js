@@ -1,0 +1,1 @@
+import React from 'react'; const Overdue = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M12,4 C16.418,4 20,7.582 20,12 C20,16.418 16.418,20 12,20 C7.582,20 4,16.418 4,12 C4,7.582 7.582,4 12,4 Z M11,6 L11,12 L12,12 L12,6 L11,6 Z M11,12 L11,13 L18,13 L18,12 L11,12 Z"/></g></g></svg>; export default Overdue;

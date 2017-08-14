@@ -1,0 +1,1 @@
+import React from 'react'; const Info = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><g><g><rect width="1.65" height="3.801" x="6.261" y="6.542"/></g><g><rect width="1.65" height="1.593" x="6.261" y="3.831"/></g></g></svg>; export default Info;

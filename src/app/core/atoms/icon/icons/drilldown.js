@@ -1,0 +1,1 @@
+import React from 'react'; const Drilldown = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><polygon points="3.847,5.984 7.087,9.223 10.326,5.984" clipRule="evenodd"/></svg>; export default Drilldown;

@@ -1,0 +1,1 @@
+import React from 'react'; const Customer = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M3,20 C3,16.134 7.029,13 12,13 C16.971,13 21,16.134 21,20 L3,20 Z M13,16 L13,18 L16,18 L16,16 L13,16 Z"/><path d="M16,8 C16,5.791 14.209,4 12,4 C9.791,4 8,5.791 8,8 C8,10.209 9.791,12 12,12 C14.209,12 16,10.209 16,8 L16,8 Z"/></g></g></svg>; export default Customer;

@@ -1,0 +1,1 @@
+import React from 'react'; const Failure = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><polygon points="10.247,5.004 9.168,3.926 7.087,6.008 5.006,3.926 3.928,5.004 6.008,7.086 3.926,9.169 5.005,10.248 7.086,8.166 9.167,10.248 10.246,9.169 8.165,7.087"/></svg>; export default Failure;

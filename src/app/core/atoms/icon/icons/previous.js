@@ -1,0 +1,1 @@
+import React from 'react'; const Previous = (props) => <svg {...props} viewBox="0 0 48 48"><g><path d="M15.854048,0L17.272997,1.4100033 2.8199543,15.950011 17.351,30.587004 15.932051,31.996001 0,15.949004z" transform="rotate(0,24,24) translate(10.9851233842216,0) scale(1.50018750984717,1.50018750984717)"/></g></svg>; export default Previous;

@@ -1,0 +1,1 @@
+import React from 'react'; const PlusUsers = (props) => <svg {...props} viewBox="0 0 15 15"><g><g transform="translate(-495.000000, -473.000000)"><g transform="translate(495.000000, 473.000000)"><rect width="1" height="15" x="7"/><path d="M15,7 L15,8 L0,8 L0,7 L15,7 L15,7 Z"/></g></g></g></svg>; export default PlusUsers;

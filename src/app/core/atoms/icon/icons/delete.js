@@ -1,0 +1,1 @@
+import React from 'react'; const Delete = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><polygon points="10.905,4.333 9.839,3.267 7.087,6.021 4.335,3.267 3.27,4.333 6.022,7.086 3.269,9.841 4.334,10.906 7.086,8.152 9.837,10.905 10.902,9.84 8.152,7.087"/></svg>; export default Delete;

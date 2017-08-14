@@ -1,0 +1,1 @@
+import React from 'react'; const Phone = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M15,21 L10,21 C9.44771525,21 9,20.5550537 9,20.0066023 L9,3.99339768 C9,3.44475929 9.44386482,3 10,3 L15,3 L15,8 L11,8 L11,16 L15,16 L15,21 Z" transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000)"/></g></g></svg>; export default Phone;

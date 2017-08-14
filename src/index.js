@@ -1,10 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from 'containers/index';
+import Tables from 'containers/tables';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-ReactDOM.render(<MuiThemeProvider>
-    <App />
-</MuiThemeProvider>, document.getElementById('root'));
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+import createHistory from 'history/createBrowserHistory';
+import { Router, Route } from 'react-router';
+
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+
+import reducers from 'reducers/index';
+
+const history = createHistory();
+
+const middleware = routerMiddleware(history);
+
+const store = createStore(
+    combineReducers({
+        app: reducers,
+        router: routerReducer
+    }),
+    applyMiddleware(middleware)
+);
+
+ReactDOM.render(<App />, document.getElementById('root'));

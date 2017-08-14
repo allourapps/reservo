@@ -1,0 +1,1 @@
+import React from 'react'; const VesselFront = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="17 10 17 6 14 6 13 3 11 3 10 6 7 6 7 10"/><path d="M14,11 L12,14 L10,11 L4,11 L6.513,17.702 C6.806,18.483 7.552,19 8.386,19 L15.614,19 C16.448,19 17.194,18.483 17.487,17.702 L20,11 L13,11 L14,11 Z"/></g></g></svg>; export default VesselFront;

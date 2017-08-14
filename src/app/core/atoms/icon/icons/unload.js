@@ -1,0 +1,1 @@
+import React from 'react'; const Unload = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><rect width="12" height="6" x="6" y="14" rx="1"/><polygon points="12.00015 3 17.70695 8.69999981 16.29295 10.1199999 12.99995 6.82000017 12.99995 12.9999 10.99995 12.9999 10.99995 6.82000017 7.70695 10.1199999 6.29295 8.69999981"/></g></g></svg>; export default Unload;

@@ -1,0 +1,1 @@
+import React from 'react'; const Upload = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><g><polygon points="11.795,7.325 7.087,3.105 2.378,7.325 3.383,8.447 6.333,5.803 6.333,12.98 7.84,12.98 7.84,5.803 10.79,8.447"/><rect width="8.863" height="1.507" x="2.655" y="1.193"/></g></svg>; export default Upload;

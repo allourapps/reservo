@@ -1,0 +1,1 @@
+import React from 'react'; const Dropdown = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="11.707 13.293 7.414 9 6 10.414 11.707 16.121 17.414 10.414 16 9"/></g></g></svg>; export default Dropdown;

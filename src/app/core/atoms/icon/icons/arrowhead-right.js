@@ -1,0 +1,1 @@
+import React from 'react'; const ArrowheadRight = (props) => <svg {...props} viewBox="0 0 48 48"><g><path d="M0,0L25.194,16 0,32z" transform="rotate(0,24,24) translate(5.10449981689453,0) scale(1.5,1.5)"/></g></svg>; export default ArrowheadRight;

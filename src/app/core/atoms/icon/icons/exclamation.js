@@ -1,0 +1,1 @@
+import React from 'react'; const Exclamation = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><g><polygon points="7.637,8.723 7.857,2.825 6.316,2.825 6.56,8.723"/><rect width="1.504" height="1.557" x="6.323" y="9.791"/></g></svg>; export default Exclamation;

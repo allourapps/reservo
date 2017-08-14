@@ -1,0 +1,7 @@
+.icon.animated {
+    transition: all 0.2s ease;
+
+    &.rotate90 {
+        transform: rotate(90deg);
+    }
+}

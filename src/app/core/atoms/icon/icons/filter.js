@@ -1,0 +1,1 @@
+import React from 'react'; const Filter = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="8 14 16 14 16 12 8 12"/><polygon points="11 18 13 18 13 16 11 16"/><polygon points="5 10 19 10 19 8 5 8"/></g></g></svg>; export default Filter;

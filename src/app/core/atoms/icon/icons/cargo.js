@@ -1,0 +1,1 @@
+import React from 'react'; const Cargo = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><path d="M11,4 L4,11 L4,20 L13,20 L20,13 L20,4 L11,4 Z M6,14 L8,14 L8,12 L6,12 L6,14 Z M10,18 L12,18 L12,12 L10,12 L10,18 Z"/></g></g></svg>; export default Cargo;

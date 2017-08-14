@@ -1,0 +1,1 @@
+import React from 'react'; const SortBy = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="9 11 15 11 12 14.0015728"/><polygon points="5 9 19 9 19 7 5 7"/><polygon points="5 17.001 19 17.001 19 15 5 15"/></g></g></svg>; export default SortBy;

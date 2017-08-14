@@ -1,0 +1,1 @@
+import React from 'react'; const ArrowUp = (props) => <svg {...props} x="0px" y="0px" viewBox="0 0 14.173 14.173"><polygon points="7.087,5.016 3.737,8.019 4.756,9.157 7.087,7.069 9.417,9.157 10.437,8.019"/></svg>; export default ArrowUp;

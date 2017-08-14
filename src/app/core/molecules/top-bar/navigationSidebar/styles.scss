@@ -1,0 +1,96 @@
+@import '../../../global/colors';
+
+.navigationSidebarWrapper {
+    .navigationSidebarTransitionWrapper-enter {
+        .box {
+            transform: translateX(-100%);
+        }
+        .underlay {
+            background-color: rgba(0,0,0,0);
+            opacity: 0;
+        }
+    }
+
+    .navigationSidebarTransitionWrapper-enter-active {
+        .box {
+            transform: translateX(0);
+            transition: all 0.2s ease-out;
+        }
+        .underlay {
+            background-color: rgba(0,0,0,0.4);
+            transition: all 0.2s ease-out;
+            opacity: 1;
+        }
+    }
+
+    .navigationSidebarTransitionWrapper-leave {
+        .box {
+            transform: translateX(0);
+        }
+        .underlay {
+            background-color: rgba(0,0,0,0.4);
+            opacity: 1;
+        }
+    }
+
+    .navigationSidebarTransitionWrapper-leave-active {
+        .box {
+            transform: translateX(-100%);
+            transition: all 0.2s ease-out;
+        }
+        .underlay {
+            background-color: rgba(0,0,0,0);
+            transition: all 0.2s ease-out;
+            opacity: 0;
+        }
+    }
+}
+
+.navigationSidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    .box {
+        height: 100%;
+        width: 60vw;
+        min-width: 280px;
+        max-width: 360px;
+        background: white;
+        z-index: 9999999;
+        box-shadow: 0 0 34px 0 rgba(0, 0, 0, 0.29);
+    }
+    .underlay {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.4);
+        opacity: 1;
+        z-index: 8888888;
+    }
+
+    .icon-arrow-down {
+        transition: all 0.15s linear;
+        &.isOpen {
+            transform: scaleY(-1);
+        }
+    }
+    .linkListItem {
+        border-top: solid 1px $border-color!important;
+        &.active {
+            background-color: lighten($primary-color, 34)!important;
+            &:not(.hasChildRoutes) {
+                pointer-events: none!important;
+            }
+        }
+    }
+    .header {
+        padding: 24px 0 12px 0;
+        * {
+            color: $secondary-color!important;
+        }
+    }
+}

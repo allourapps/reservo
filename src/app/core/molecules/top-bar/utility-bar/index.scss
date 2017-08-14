@@ -1,0 +1,31 @@
+@import '../../../global/colors';
+@import "../shared.scss";
+
+.utility_bar {
+    flex-direction: row;
+    overflow: hidden;
+    .divider {
+        background: $secondary-color;
+        width: 1px;
+    }
+    .utility_item {
+        &:hover {
+            background-color: rgba(0,0,0,0.15)!important;
+        }
+    }
+    fb {
+        &:not(.divider) {
+            justify-content: center;
+            align-items: center;
+            line-height: $topbar-first-level-height!important;
+            height: $topbar-first-level-height!important;
+            border-radius: 0!important;
+            background-color: rgba(0,0,0,0)!important;
+            span {
+                color: white!important;
+                padding: 0 1.5rem!important;
+                font-weight: 300!important;
+            }
+        }
+    }
+}

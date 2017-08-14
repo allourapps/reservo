@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from 'containers/root/login';
+import Login from 'containers/login';
 
 export default class Root extends Component {
     render() {

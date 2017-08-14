@@ -1,0 +1,1 @@
+import React from 'react'; const Activities = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="10.481 2.9998 5.382 13 3 13 3 15 6.618 15 9.519 9.3948 11.448 20.9678 16.601 12.7238 17.219 15 21 15 21 13 18.7800007 13 17.399 7.6718 12.553 15.4268"/></g></g></svg>; export default Activities;

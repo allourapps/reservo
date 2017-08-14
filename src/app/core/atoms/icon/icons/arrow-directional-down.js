@@ -1,0 +1,1 @@
+import React from 'react'; const ArrowDirectionalDown = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="14 11 16 11 11.9993333 7 8 11 10 11 10 17 14 17" transform="translate(12.000000, 12.000000) scale(1, -1) translate(-12.000000, -12.000000)"/></g></g></svg>; export default ArrowDirectionalDown;

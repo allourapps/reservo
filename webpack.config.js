@@ -23,10 +23,11 @@ module.exports = {
             core: 'src/app/core',
             atoms: 'src/app/core/atoms',
             molecules: 'src/app/core/molecules',
+            packages: 'src/app/core/packages',
             global: 'src/app/core/global',
             api: 'src/app/core/api',
-            reducers: 'src/app/reducers',
-            selectors: 'src/app/selectors',
+            reducers: 'src/app/data-reducers',
+            selectors: 'src/app/data-selectors',
         },
         extensions: [ '', '.js', '.jsx', 'css', 'scss' ]
     },

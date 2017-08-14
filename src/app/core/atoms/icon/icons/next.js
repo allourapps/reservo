@@ -1,0 +1,1 @@
+import React from 'react'; const Next = (props) => <svg {...props} viewBox="0 0 48 48"><g><path d="M1.4200482,0L17.351001,16.046996 1.4980513,31.996001 0.078979631,30.585997 14.531046,16.046019 0,1.4089964z" transform="rotate(0,24,24) translate(10.9851219535313,0) scale(1.50018750984717,1.50018750984717)"/></g></svg>; export default Next;

@@ -1,0 +1,1 @@
+import React from 'react'; const Email = (props) => <svg {...props} viewBox="0 0 24 24"><g><g><polygon points="4 6 12 12 20 6"/><path d="M20,6 L12,14.8 L4,6 L4,16.0044225 C4,16.5542648 4.44463086,17 5.00087166,17 L18.9991283,17 C19.5518945,17 20,16.555163 20,16.0044225 L20,6 Z"/></g></g></svg>; export default Email;
