@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const config = require("../../config");
-const {UserModel} = require("./mongoModels");
+const {UserModel, TableModel} = require("./mongoModels");
 mongoose.Promise = Promise;
 
 mongoose.connect(config.mainMongo.url, config.mainMongo.options);
@@ -29,6 +29,11 @@ const mongo = {
     updateToken : (username, token, next) => {
         UserModel.update({username}, {$set : {token}})
             .then(doc => next(null), err => next(err));
+    },
+
+    getTables : (username, next) => {
+        TableModel.find({}, null, {lean: true})
+            .then(doc => next(null, doc), err => next(err))
     }
 
 };

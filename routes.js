@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const router = require('express').Router();
 const clientRequests = require('./middlewares/client');
+const tableRequests = require("./modules/tables");
 const path = require('path');
 
 router.post('/register', (req, res, next) => {
@@ -21,6 +22,13 @@ router.post('/login', (req, res, next) => {
         return;
     }
     next({message : 'Body is not provided'})
+});
+
+router.get("/api/tables", (req, res, next) => {
+    tableRequests.getTables(req, (err, result) => {
+        if (err) return next(err);
+        res.send(result);
+    })
 });
 
 router.get('/', (req, res) => {

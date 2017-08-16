@@ -5,12 +5,14 @@ const webpack = require('webpack');
 const logger = require('morgan');
 const config = require('./config');
 const routes = require('./routes');
+const expressJwt = require("express-jwt");
 process.env.NODE_ENV = config.mode;
 const app = express();
 const webPackConfig = require('./webpack.config');
 
 const compiler = webpack(webPackConfig);
 
+app.use("/api", expressJwt({secret: config.jwtSecret}));
 app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: webPackConfig.output.publicPath
 }));
