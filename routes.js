@@ -30,11 +30,14 @@ router.get("/api/tables", (req, res, next) => {
         res.send(result);
     })
 });
-
-router.get('/', (req, res) => {
-    // res.render('index');
-    res.sendFile(path.join(__dirname, 'index.html'));
+router.get("/api/rooms", (req, res, next) => {
+    tableRequests.getRooms(req, (err, result) => {
+        if (err) return next(err);
+        res.send(result);
+    })
 });
+
+router.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
 /**
  * Not Found API

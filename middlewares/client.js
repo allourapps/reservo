@@ -4,10 +4,12 @@ const mongoRequests = require("../dbQueries/mongodb/mongoRequests");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 const winston = require("winston");
+const shortid = require("shortid");
 
 const client = {
 
     createClient : (data, next) => {
+        data.userId = shortid.generate();
         mongoRequests.addUser(data, (err, result) => err ? next(err) : next(null, result));
     },
 

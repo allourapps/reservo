@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const config = require("../../config");
-const {UserModel, TableModel} = require("./mongoModels");
+const {UserModel, TableModel, RoomModel} = require("./mongoModels");
 mongoose.Promise = Promise;
 
 mongoose.connect(config.mainMongo.url, config.mainMongo.options);
@@ -17,7 +17,8 @@ mongoose.connection.on("error", err => {
 const mongo = {
 
     addUser : (data, next) => {
-        next(null, {status : "OK"});
+        UserModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
     },
 
     findUser : (username, next) => {
@@ -31,9 +32,14 @@ const mongo = {
             .then(doc => next(null), err => next(err));
     },
 
-    getTables : (username, next) => {
-        TableModel.find({}, null, {lean: true})
+    getTables : (roomId, next) => {
+        TableModel.find({roomId}, null, {lean: true})
             .then(doc => next(null, doc), err => next(err))
+    },
+
+    getRooms : (userId, next) => {
+        RoomModel.find({userId}, null, {lean : true})
+          .then(doc => next(null, doc), err => next(err))
     }
 
 };
