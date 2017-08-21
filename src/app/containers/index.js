@@ -33,7 +33,7 @@ const mapStateToProps = (state) => ({
 const RoutesHandler = connect(mapStateToProps)((props) => {
     return (
         <Router>
-            <fb style={{ height: '100%' }}>
+            <fb className="grow" style={{ height: '100%' }}>
                 {props.auth.isLoading ? null :
                     generateRouteMatches(BaseRoutes, indexPathname, props.auth.isLoading, props.auth.isLoggedIn)
                 }

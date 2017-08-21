@@ -19,7 +19,7 @@ export const generateRouteMatches = (baseRoutes, indexPathname, isLoading, isLog
                 if (!route.noAuthNeeded && !route.isLoggedIn && !route.authIsLoading) {
                     return (
                         <Redirect to={{
-                            pathname: '/core/login',
+                            pathname: '/login',
                             state: { from: props.location }
                         }}/>
                     );

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
-import Board from './board';
-
-export default class Tables extends Component {
+export default class SubMenu extends Component {
     render() {
+        console.log(this.props);
         return (
             <fb>
-                <Board />
+                Here is submenu
             </fb>
         );
     }

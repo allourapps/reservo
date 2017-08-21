@@ -1,9 +1,19 @@
 import { combineReducers } from 'redux';
 
 import tables from './tables';
+import login from './login';
+
+const auth = combineReducers({
+    login
+});
+
+const data = combineReducers({
+    tables
+});
 
 const reducer = combineReducers({
-    tables,
+    auth,
+    data
 });
 
 export default reducer;

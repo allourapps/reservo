@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/RaisedButton';
@@ -8,10 +10,14 @@ import Header from 'atoms/header';
 
 import { Col, Row } from 'molecules/grid';
 
+import { doLogin } from 'reducers/login/index';
+
+@connect(null, { doLogin })
 export default class Login extends Component {
     render() {
+        console.log(this.props);
         return (
-            <div className="App">
+            <fb className="App grow">
                 <Paper zDepth={1}>
                     <fb className="pad1">
                         <Row>
@@ -43,12 +49,17 @@ export default class Login extends Component {
                                     label="Login"
                                     primary={true}
                                     fullWidth={true}
+                                    onClick={() => {
+                                        this.props.doLogin({
+
+                                        })
+                                    }}
                                 />
                             </Col>
                         </Row>
                     </fb>
                 </Paper>
-            </div>
+            </fb>
         );
     }
 }

@@ -31,10 +31,6 @@ const Title = ({ title, style }: ITitleProps) => {
 
     return (
         <fb style={customStyle} className="row noShrink aCenter jStart">
-            <fb className="noGrow noShrink">
-                <Icon name="cfm-logo" style={iconStyle} />
-            </fb>
-
             <fb className="noShrink noGrow" style={padding}>
                 <Text fontSize="1.6rem" color="white" fontWeight={300}>{title}</Text>
             </fb>
