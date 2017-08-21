@@ -12,7 +12,7 @@ const webPackConfig = require('./webpack.config');
 
 const compiler = webpack(webPackConfig);
 
-app.use("/api", expressJwt({secret: config.jwtSecret}));
+// app.use("/api", expressJwt({secret: config.jwtSecret}));
 app.use(require('webpack-dev-middleware')(compiler, {
     publicPath: webPackConfig.output.publicPath
 }));
