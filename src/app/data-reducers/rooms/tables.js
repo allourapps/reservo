@@ -1,5 +1,5 @@
 import { createGetReducer, createGetActionCreator } from 'core/redux';
-import { GetTablesList } from 'api/Tables';
+import { GetTablesList } from 'api/Rooms';
 import { getTables } from 'selectors/index';
 
 // -------- actionCreator
