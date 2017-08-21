@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import tables from './tables';
+import rooms from './rooms/tables';
 import login from './login';
 
 const auth = combineReducers({
@@ -8,7 +8,7 @@ const auth = combineReducers({
 });
 
 const data = combineReducers({
-    tables
+    rooms
 });
 
 const reducer = combineReducers({
