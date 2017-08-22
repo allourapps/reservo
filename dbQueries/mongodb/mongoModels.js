@@ -20,13 +20,15 @@ const defaultSchema = new Schema({}, {
  */
 
 const UserSchema = new Schema({
-    org_name : {type : String, required : true},
-    director_name : {type : String, required : true},
+    orgName : {type : String, required : true},
+    directorName : {type : String, required : true},
     address : {type : String, required : true},
     phone : {type : Number, required : true},
     email : {type : String, required : true},
-    apps_quantity : {type : Number, required : true},
-    roles : {type : Array, required : true}
+    appsQuantity : {type : Number, required : true},
+    roles : {type : Array, required : true},
+    userName : {type : String, required : true},
+    password : {type : String, required : true}
 }, {
     versionKey : false,
     strict: false

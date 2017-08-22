@@ -5,16 +5,17 @@ const tableRequests = require("./modules/tables");
 const path = require('path');
 
 router.post('/register', (req, res, next) => {
-    if (req.body) {
+    if (!_.isEmpty(req.body)) {
         clientRequests.createClient(req.body, (err, result) => {
             if (err) return next(err);
             res.send(result);
         });
+        return;
     }
+    next({message: 'Body is not provided'})
 });
 
 router.post('/login', (req, res, next) => {
-    console.log(req.body);
     if (!_.isEmpty(req.body)) {
         clientRequests.getClient(req.body, (err, result) => {
             if (err) return next(err);

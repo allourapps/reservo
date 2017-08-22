@@ -4,12 +4,13 @@ const mongoRequests = require("../dbQueries/mongodb/mongoRequests");
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 const winston = require("winston");
-const shortid = require("shortid");
+const guid = require("guid");
+// const shortid = require("shortid");
 
 const client = {
 
     createClient : (data, next) => {
-        data.userId = shortid.generate();
+        data.userId = guid.raw();
         mongoRequests.addUser(data, (err, result) => err ? next(err) : next(null, result));
     },
 
@@ -18,11 +19,11 @@ const client = {
         mongoRequests.findUser(username, (err, result) => {
             if (err) return next(err);
             if (result) {
-                if (result.password !== data.pass) return next({message : "Password is not correct"});
+                if (result.password !== data.password) return next({message : "Password is not correct"});
                 if (!result.token) {
                     const token = jwt.sign({
-                        org_name : result.org_name,
-                        username : result.username,
+                        orgName : result.orgName,
+                        userName : result.userName,
                     }, config.jwtSecret);
                     result.token = token;
                     mongoRequests.updateToken(result.username, token, err => {
