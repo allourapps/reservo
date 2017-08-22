@@ -21,8 +21,8 @@ const mongo = {
           .then(doc => next(null, {status : "OK"}), err => next(err));
     },
 
-    findUser : (username, next) => {
-        UserModel.findOne({username}, null, {lean : true})
+    findUser : (UserName, next) => {
+        UserModel.findOne({UserName}, null, {lean : true})
           .then(doc => next(null, doc), err => next(err))
 
     },

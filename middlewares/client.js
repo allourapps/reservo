@@ -10,23 +10,23 @@ const guid = require("guid");
 const client = {
 
     createClient : (data, next) => {
-        data.userId = guid.raw();
+        data.Guid = guid.raw();
         mongoRequests.addUser(data, (err, result) => err ? next(err) : next(null, result));
     },
 
     getClient : (data, next) => {
-        const username = data.username;
+        const username = data.userName;
         mongoRequests.findUser(username, (err, result) => {
             if (err) return next(err);
             if (result) {
-                if (result.password !== data.password) return next({message : "Password is not correct"});
-                if (!result.token) {
+                if (result.Password !== data.Password) return next({message : "Password is not correct"});
+                if (!result.Token) {
                     const token = jwt.sign({
-                        orgName : result.orgName,
-                        userName : result.userName,
+                        OrganisationName : result.OrganisationName,
+                        UserName : result.UserName,
                     }, config.jwtSecret);
-                    result.token = token;
-                    mongoRequests.updateToken(result.username, token, err => {
+                    result.Token = token;
+                    mongoRequests.updateToken(result.UserName, token, err => {
                         if (err) winston.log("error", err);
                     })
                 }
