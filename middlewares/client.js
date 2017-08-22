@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const config = require("../config");
 const winston = require("winston");
 const guid = require("guid");
-// const shortid = require("shortid");
 
 const client = {
 
@@ -15,7 +14,7 @@ const client = {
     },
 
     getClient : (data, next) => {
-        const username = data.userName;
+        const username = data.UserName;
         mongoRequests.findUser(username, (err, result) => {
             if (err) return next(err);
             if (result) {
