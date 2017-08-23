@@ -29,6 +29,7 @@ const client = {
                         if (err) winston.log("error", err);
                     })
                 }
+                delete result["_id"];
                 return next(null, result);
             }
             return next({message : "User doesn't exist"});
