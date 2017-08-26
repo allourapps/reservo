@@ -1,0 +1,4 @@
+GetOrganisationsByUser(UserGuid) -> Return all organisations where logged in user is owner or working
+GetRoomsByOrganisation(OrganisationGuid) -> Return all rooms which connected whith current selected organisation
+GetTablesByRoom(RoomGuid) -> Return all tables of room
+GetOrganisationUsers(OrganisationGuid) -> Merge positions and users list and return merged data of users connected with our organisation
