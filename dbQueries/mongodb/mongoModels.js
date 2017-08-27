@@ -58,10 +58,21 @@ const RoleSchema = new Schema({
     strict: false
 });
 
+const PositionSchema = new Schema({
+    Guid: {type : String, required : true},
+    EmployeeGuid: {type : String, required : true},
+    OrganisationGuid: {type : String, required : true},
+    RoleGuid: {type : String, required : true}
+}, {
+    versionKey : false,
+    strict: false
+});
+
 const EmployeeModel = mongoose.model("Employees", EmployeeSchema);
 const OrganisationModel = mongoose.model("Organisations", OrganisationSchema);
 const RoleModel = mongoose.model("Roles", RoleSchema);
 const TableModel = mongoose.model("Tables", defaultSchema);
 const RoomModel = mongoose.model("Rooms", defaultSchema);
+const PositionModel = mongoose.model("Positions", PositionSchema);
 
-module.exports = {EmployeeModel, OrganisationModel, RoleModel, TableModel, RoomModel};
+module.exports = {EmployeeModel, OrganisationModel, RoleModel, TableModel, RoomModel, PositionModel};

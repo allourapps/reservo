@@ -10,7 +10,14 @@ const role = {
       if (err) console.error(err);
       next(result);
     });
-  }
+  },
+
+  getRoles : next => {
+    mongoRequests.getRoles((err, result) => {
+      if (err) console.error(err)
+      next(result);
+    })
+  },
 
 };
 

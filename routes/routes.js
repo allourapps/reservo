@@ -4,6 +4,8 @@ const clientRequests = require('./../middlewares/client');
 const tableRequests = require("./../modules/tables");
 const roleRequests = require("./../modules/roles");
 const roomRequests = require("./../modules/rooms");
+const positionRequests = require("./../modules/positions");
+const organisationRequests = require("./../modules/organisations");
 const path = require('path');
 
 router.post('/employee', (req, res, next) => {
@@ -40,7 +42,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/position', (req, res) => {
-
+    console.log(req.body);
+    positionRequests.addPosition(req.body, result => res.send(result));
 });
 
 router.post('/role', (req, res) => {
@@ -53,6 +56,10 @@ router.post('/room', (req, res) => {
 
 router.post('/table', (req, res) => {
     tableRequests.addTable(req.body, result => res.send(result));
+});
+
+router.get('/api/roles', (req, res) => {
+   roleRequests.getRoles(result => res.send(result));
 });
 
 router.get("/api/tables/:id", (req, res, next) => {
@@ -69,7 +76,9 @@ router.get("/api/rooms/:id", (req, res, next) => {
     })
 });
 
-
+router.get("/api/organisations/:id", (req, res) => {
+    organisationRequests.getOrganisations(req, result => res.send(result));
+});
 
 router.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 

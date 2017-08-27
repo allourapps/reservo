@@ -1,7 +1,14 @@
 
 const mongoose = require("mongoose");
 const config = require("../../config");
-const {EmployeeModel, OrganisationModel, RoleModel, TableModel, RoomModel} = require("./mongoModels");
+const {
+  EmployeeModel,
+  OrganisationModel,
+  RoleModel,
+  TableModel,
+  RoomModel,
+  PositionModel
+} = require("./mongoModels");
 mongoose.Promise = Promise;
 
 mongoose.connect(config.mainMongo.url, config.mainMongo.options);
@@ -39,6 +46,27 @@ const mongo = {
     addTable : (data, next) => {
         TableModel.create(data)
           .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    addPosition : (data, next) => {
+        PositionModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    getRoles : next => {
+        RoleModel.find({}, null, {lean : true})
+          .then(doc => next(null, doc), err => next(err))
+    },
+
+    getOrganisations : (EmployeeGuid, next) => {
+        PositionModel.find({EmployeeGuid}, null, {lean : true})
+          .then(doc => next(null, doc), err => next(err))
+    },
+
+    getOrganisationsById : (organisationGuids, next) => {
+        const query = {"Guid" : {$in : organisationGuids}};
+        OrganisationModel.find(query, null, {lean : true})
+          .then(doc => next(null, doc), err => next(err))
     },
 
     findEmployee : (Login, next) => {
