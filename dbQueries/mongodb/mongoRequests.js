@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const config = require("../../config");
-const {UserModel, TableModel, RoomModel} = require("./mongoModels");
+const {EmployeeModel, OrganisationModel, RoleModel, TableModel, RoomModel} = require("./mongoModels");
 mongoose.Promise = Promise;
 
 mongoose.connect(config.mainMongo.url, config.mainMongo.options);
@@ -16,29 +16,49 @@ mongoose.connection.on("error", err => {
 
 const mongo = {
 
-    addUser : (data, next) => {
-        UserModel.create(data)
+    addEmployee : (data, next) => {
+        EmployeeModel.create(data)
           .then(doc => next(null, {status : "OK"}), err => next(err));
     },
 
-    findUser : (UserName, next) => {
-        UserModel.findOne({UserName}, null, {lean : true})
+    addOrganisation : (data, next) => {
+        OrganisationModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    addRole : (data, next) => {
+        RoleModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    addRoom : (data, next) => {
+        RoomModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    addTable : (data, next) => {
+        TableModel.create(data)
+          .then(doc => next(null, {status : "OK"}), err => next(err));
+    },
+
+    findEmployee : (Login, next) => {
+        EmployeeModel.findOne({Login}, null, {lean : true})
           .then(doc => next(null, doc), err => next(err))
 
     },
 
     updateToken : (username, token, next) => {
-        UserModel.update({username}, {$set : {token}})
+        EmployeeModel.update({username}, {$set : {token}})
             .then(doc => next(null), err => next(err));
     },
 
-    getTables : (roomId, next) => {
-        TableModel.find({roomId}, null, {lean: true})
+    getTables : (RoomGuid, next) => {
+        TableModel.find({RoomGuid}, null, {lean: true})
             .then(doc => next(null, doc), err => next(err))
     },
 
-    getRooms : (userId, next) => {
-        RoomModel.find({userId}, null, {lean : true})
+    getRooms : (OrganisationGuid, next) => {
+        RoomModel.find({OrganisationGuid}, null, {lean : true})
           .then(doc => next(null, doc), err => next(err))
     }
 

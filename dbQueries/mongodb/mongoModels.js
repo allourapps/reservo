@@ -16,27 +16,52 @@ const defaultSchema = new Schema({}, {
 });
 
 /**
- * user schema
+ * Employee Schema
  */
 
-const UserSchema = new Schema({
-    OrganisationName : {type : String, required : true},
+const EmployeeSchema = new Schema({
+    Guid : {type : String, required : true},
     Name : {type : String, required : true},
-    Surname : {type : String, required : true},
-    Address : {type : String, required : true},
-    Phone : {type : String, required : true},
-    Email : {type : String, required : true},
-    Roles : {type : Array, required : true},
-    UserName : {type : String, required : true},
+    SureName : {type : String, required : true},
+    Login : {type : String, required : true},
     Password : {type : String, required : true},
-    Guid : {type : String, required : true}
+    BirthDay : {type : String, required : true},
+    PhotoPath : {type : String, required : true},
+    Email : {type : String, required : true}
 }, {
     versionKey : false,
     strict: false
 });
 
-const UserModel = mongoose.model("Users", UserSchema);
-const TableModel = mongoose.model("Tables", defaultSchema);
-const RoomModel = mongoose.model("Tables", defaultSchema);
+/**
+ * Organisation Schema
+ */
 
-module.exports = {UserModel, TableModel, RoomModel};
+const OrganisationSchema = new Schema({
+    Guid: {type : String, required : true},
+    Name: {type : String, required : true},
+    Address: {type : String, required : true}
+}, {
+    versionKey : false,
+    strict: false
+});
+
+/**
+ * Role Schema
+ */
+
+const RoleSchema = new Schema({
+    Guid: {type : String, required : true},
+    Name: {type : String, required : true}
+}, {
+    versionKey : false,
+    strict: false
+});
+
+const EmployeeModel = mongoose.model("Employees", EmployeeSchema);
+const OrganisationModel = mongoose.model("Organisations", OrganisationSchema);
+const RoleModel = mongoose.model("Roles", RoleSchema);
+const TableModel = mongoose.model("Tables", defaultSchema);
+const RoomModel = mongoose.model("Rooms", defaultSchema);
+
+module.exports = {EmployeeModel, OrganisationModel, RoleModel, TableModel, RoomModel};
