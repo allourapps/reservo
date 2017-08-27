@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class SubMenu extends Component {
+import Tabs from 'atoms/tabs';
+
+export default class SubMenu extends PureComponent {
     render() {
-        console.log(this.props);
         return (
-            <fb>
-                Here is submenu
+            <fb className="noGrow">
+                <Tabs
+                    tabs={this.props.rooms.map(obj => ({
+                        ...obj,
+                        label: obj.Name,
+                        value: obj.Guid,
+                        key: obj.Guid,
+                    }))}
+                    onChange={this.props.onChange}
+                />
             </fb>
         );
     }

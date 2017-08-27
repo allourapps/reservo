@@ -1,15 +1,25 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import SubMenu from './sub-menu';
 import Table from './table';
 
-export default class Board extends Component {
+import { rooms } from 'mockData/Rooms';
+
+export default class Board extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedRoom: rooms[0]
+        };
+    }
+
+    onChange = (obj) => this.setState({ selectedRoom: obj });
+
     render() {
-        console.log(this.props);
         return (
             <fb>
-                <SubMenu/>
-                <Table/>
+                <SubMenu onChange={this.onChange} rooms={rooms}/>
+                <Table room={this.state.selectedRoom} />
             </fb>
         );
     }

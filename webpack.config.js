@@ -28,6 +28,7 @@ module.exports = {
             api: 'src/app/core/api',
             reducers: 'src/app/data-reducers',
             selectors: 'src/app/data-selectors',
+            mockData: 'src/app/mock-data',
         },
         extensions: [ '', '.js', '.jsx', 'css', 'scss' ]
     },

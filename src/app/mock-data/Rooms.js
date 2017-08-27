@@ -4,8 +4,8 @@ export const rooms = [
         Name: 'Hall',
         OrganisationGuid: '838bc6cf-73fc-4743-a403-ac186622a8a9',
         Size: {
-            Width: '140px',
-            height: '100px'
+            Width: '400px',
+            Height: '600px'
         }
     },
     {
@@ -13,8 +13,8 @@ export const rooms = [
         Name: 'Balcony',
         OrganisationGuid: '838bc6cf-73fc-4743-a403-ac186622a8a9',
         Size: {
-            Width: '80px',
-            height: '40px'
+            Width: '800px',
+            Height: '400px'
         }
     },
     {
@@ -22,8 +22,8 @@ export const rooms = [
         Name: 'Hall',
         OrganisationGuid: '838bc6cf-73fc-4743-a403-ac186622a8a9',
         Size: {
-            Width: '200px',
-            height: '100px'
+            Width: '700px',
+            Height: '500px'
         }
     },
 ];
