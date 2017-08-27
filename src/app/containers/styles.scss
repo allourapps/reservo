@@ -3,6 +3,11 @@ html {
   font-size: 12px;
   font-family: Roboto, sans-serif;
 }
+
+#root {
+  overflow: hidden;
+}
+
 fb, .fb {
   display: flex;
   flex: 1 1 auto;
@@ -22,6 +27,10 @@ fb, .fb {
 
   &.shrink {
     flex-shrink: 1;
+  }
+
+  &.overflowHidden {
+    overflow: hidden;
   }
 
   &.noShrink {

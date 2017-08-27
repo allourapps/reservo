@@ -1,11 +1,32 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-export default class Table extends Component {
+import Paper from 'atoms/paper';
+import SingleTable from './table';
+
+import { tables } from 'mockData/tables';
+
+export default class Table extends PureComponent {
     render() {
-        console.log(this.props);
+        const { room } = this.props;
         return (
-            <fb>
-                Here is table
+            <fb className="overflowHidden">
+                <Paper
+                    zDepth={1}
+                >
+                    <div
+                        style={{
+                            overflow: 'hidden',
+                            position: 'relative',
+                            background: 'red',
+                            width: room.Size.Width,
+                            height: room.Size.Height
+                        }}
+                    >
+                        {
+                            tables.map((obj) => <SingleTable key={obj.Guid} table={obj} />)
+                        }
+                    </div>
+                </Paper>
             </fb>
         );
     }
