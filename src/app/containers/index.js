@@ -11,6 +11,8 @@ import './styles.scss';
 import { generateRouteMatches } from 'core/routes/helper';
 import BaseRoutes, { indexPathname } from './routes';
 
+import { getAppAuth } from 'selectors/index';
+
 const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
@@ -25,17 +27,14 @@ const enhancer = composeEnhancers(
 const store: Store<*, *> = createStore(reducers, enhancer);
 
 const mapStateToProps = (state) => ({
-    auth: {
-        isLoading: false,
-        isLoggedIn: true
-    }
+    auth: getAppAuth(state)
 });
 const RoutesHandler = connect(mapStateToProps)((props) => {
     return (
         <Router>
             <fb className="grow" style={{ height: '100%' }}>
                 {props.auth.isLoading ? null :
-                    generateRouteMatches(BaseRoutes, indexPathname, props.auth.isLoading, props.auth.isLoggedIn)
+                    generateRouteMatches(BaseRoutes, indexPathname, props.auth.isLoading || false, props.auth.isLoggedIn || false)
                 }
             </fb>
         </Router>

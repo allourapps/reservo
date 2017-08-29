@@ -11,9 +11,13 @@ const data = combineReducers({
     rooms
 });
 
-const reducer = combineReducers({
+const app = combineReducers({
     auth,
     data
+});
+
+const reducer = combineReducers({
+    app
 });
 
 export default reducer;
