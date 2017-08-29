@@ -14,8 +14,19 @@ import { doLogin } from 'reducers/login/index';
 
 @connect(null, { doLogin })
 export default class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            login: '',
+            password: ''
+        }
+    }
+
     render() {
-        console.log(this.props);
+        const {
+            login,
+            password
+        } = this.state;
         return (
             <fb className="App grow">
                 <Paper zDepth={1}>
@@ -26,6 +37,10 @@ export default class Login extends Component {
                             </Col>
                             <Col xs={12}>
                                 <TextField
+                                    onChange={(e) => {
+                                        this.setState({ login: e.target.value })
+                                    }}
+                                    value={login}
                                     style={{
                                         width: '100%'
                                     }}
@@ -36,6 +51,8 @@ export default class Login extends Component {
                             </Col>
                             <Col xs={12}>
                                 <TextField
+                                    onChange={(e) => this.setState({ password: e.target.value })}
+                                    value={password}
                                     style={{
                                         width: '100%'
                                     }}
@@ -49,11 +66,7 @@ export default class Login extends Component {
                                     label="Login"
                                     primary={true}
                                     fullWidth={true}
-                                    onClick={() => {
-                                        this.props.doLogin({
-
-                                        })
-                                    }}
+                                    onClick={() => this.props.doLogin({ Login: login, Password: password })}
                                 />
                             </Col>
                         </Row>
