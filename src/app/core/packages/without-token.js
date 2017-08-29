@@ -27,9 +27,9 @@ function ApiError(message) {
 ApiError.prototype = Object.create(Error.prototype);
 ApiError.prototype.constructor = ApiError;
 
-export default class api {
+export class withoutToken {
     static baseURI(): string {
-        return `http://${window.location.hostname}:3000/api`;
+        return `http://${window.location.hostname}:3000`;
     }
 
     static baseSettings(): IBaseSettings {
@@ -37,7 +37,6 @@ export default class api {
     }
 
     static fetch(relative: string, m = 'GET', data = null, opt = null): Promise<Response> {
-
         // UpperCase() Type and check for valid entry
         const method = m.toUpperCase();
 
@@ -49,7 +48,7 @@ export default class api {
         const requestOptions = _.isPlainObject(opt) ? opt : {};
 
         // Construct Request URI
-        const uri = api.baseURI() + relative;
+        const uri = withoutToken.baseURI() + relative;
 
         // Merge BaseSettings with onthefly-constructed RequestSettings
         // (2nd parameter is prioritized automatically)
@@ -93,22 +92,22 @@ export default class api {
 
     /* GET (retrieve) */
     static get(relative, options = null) {
-        return api.fetch(relative, 'GET', null, options);
+        return withoutToken.fetch(relative, 'GET', null, options);
     }
 
     /* POST (update) */
     static post(relative, data, options = null) {
-        return api.fetch(relative, 'POST', data, options);
+        return withoutToken.fetch(relative, 'POST', data, options);
     }
 
     /* DELETE (remove) */
     static delete(relative, options = null) {
-        return api.fetch(relative, 'DELETE', null, options);
+        return withoutToken.fetch(relative, 'DELETE', null, options);
     }
 
     /* PUT (create) */
     static put(relative, data, options = null) {
-        return api.fetch(relative, 'PUT', data, options);
+        return withoutToken.fetch(relative, 'PUT', data, options);
     }
 }
 

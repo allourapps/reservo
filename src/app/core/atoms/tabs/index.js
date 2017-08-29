@@ -21,7 +21,6 @@ export default class TabsAtom extends PureComponent {
     };
 
     render() {
-        console.log(this.state.slideIndex);
         return (
             <div>
                 <Tabs
