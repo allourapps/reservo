@@ -57,9 +57,9 @@ export const apiCallApplyer = (options: IApiCallApplyerOptions) => {
             beforeApiCallCallback();
         }
         const isSingleCall = !_.isArray(apiCall);
-        const apiCallWithArgs = isSingleCall ?
-        apiCall.apply(this, apiCallArgs) :
-        apiCall.map((singleCall, i) => singleCall.apply(this, apiCallArgs[i]));
+        const apiCallWithArgs = isSingleCall
+            ? apiCall.apply(this, apiCallArgs)
+            : apiCall.map((singleCall, i) => singleCall.apply(this, apiCallArgs[i]));
 
         return Promise.all(isSingleCall ? [ apiCallWithArgs ] : apiCallWithArgs).then((responses) => {
             if (isSingleCall) {
@@ -172,6 +172,7 @@ export const createAddActionCreator = (props: ICreateAddActionCreatorProps) => {
             ...props,
             dispatch,
             receiveCallback: (p) => {
+                console.log('receiveCallback', p);
                 actionTypeOptions.forEach(aT => dispatch({
                     type: aT.forceReset ? resetPrefix + aT.suffix : addPrefix + aT.suffix,
                     IDs: aT.forceReset ? aT.IDs || [] : [ ...(aT.IDs || []), newIDValue ? newIDValue : p[newIDKey] ],

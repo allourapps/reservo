@@ -27,7 +27,7 @@ function ApiError(message) {
 ApiError.prototype = Object.create(Error.prototype);
 ApiError.prototype.constructor = ApiError;
 
-export class withoutToken {
+export default class withoutToken {
     static baseURI(): string {
         return `http://${window.location.hostname}:3000`;
     }
@@ -37,6 +37,7 @@ export class withoutToken {
     }
 
     static fetch(relative: string, m = 'GET', data = null, opt = null): Promise<Response> {
+
         // UpperCase() Type and check for valid entry
         const method = m.toUpperCase();
 
@@ -78,7 +79,6 @@ export class withoutToken {
             options.body = options.body || data || null;
 
         }
-
         // Fire the Request and Return the response promise Object
         return fetch(new Request(uri, (options: any))).then(response => {
             if (response.ok) {
@@ -110,4 +110,3 @@ export class withoutToken {
         return withoutToken.fetch(relative, 'PUT', data, options);
     }
 }
-
