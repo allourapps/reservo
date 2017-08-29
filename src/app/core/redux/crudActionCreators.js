@@ -62,6 +62,7 @@ export const apiCallApplyer = (options: IApiCallApplyerOptions) => {
             : apiCall.map((singleCall, i) => singleCall.apply(this, apiCallArgs[i]));
 
         return Promise.all(isSingleCall ? [ apiCallWithArgs ] : apiCallWithArgs).then((responses) => {
+            console.log(responses[0]);
             if (isSingleCall) {
                 if (responses[0] && !responses[0].Success) {
                     handleApiActionCreatorError(responses[0]);
