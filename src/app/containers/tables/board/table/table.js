@@ -5,7 +5,6 @@ import './styles.scss';
 export default class SingleTable extends PureComponent {
     render() {
         const { table } = this.props;
-        console.log(this.props);
         return (
             <fb
                 style={{

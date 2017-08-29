@@ -66,7 +66,7 @@ export default class Login extends Component {
                                     label="Login"
                                     primary={true}
                                     fullWidth={true}
-                                    onClick={() => this.props.doLogin({ Login: login, Password: password })}
+                                    onClick={() => this.props.doLogin({ Login: login, Password: password }).then(console.log)}
                                 />
                             </Col>
                         </Row>
