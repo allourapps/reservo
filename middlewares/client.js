@@ -35,7 +35,10 @@ const client = {
                     })
                 }
                 delete result["_id"];
-                return next(null, result);
+                return next(null, {
+                    Success : true,
+                    Result : result
+                });
             }
             return next({message : "User doesn't exist"});
         })
