@@ -16,10 +16,18 @@ export const generateRouteMatches = (baseRoutes, indexPathname, isLoading, isLog
                         }}/>
                     );
                 }
-                if (!route.noAuthNeeded && !route.isLoggedIn && !route.authIsLoading) {
+                if (!route.noAuthNeeded && !route.isLoggedIn && !route.isLoading) {
                     return (
                         <Redirect to={{
                             pathname: '/login',
+                            state: { from: props.location }
+                        }}/>
+                    );
+                }
+                if (props.location.pathname === '/login' && route.isLoggedIn) {
+                    return (
+                        <Redirect to={{
+                            pathname: '/',
                             state: { from: props.location }
                         }}/>
                     );
@@ -31,7 +39,7 @@ export const generateRouteMatches = (baseRoutes, indexPathname, isLoading, isLog
                             routes={routes}
                             children={routes ? routes.map((cRoute, i) => (
                                 <MatchWithSubRoutes
-                                    authIsLoading={route.authIsLoading}
+                                    isLoading={route.isLoading}
                                     isLoggedIn={route.isLoggedIn}
                                     key={i}
                                     {...cRoute}/>
@@ -44,7 +52,7 @@ export const generateRouteMatches = (baseRoutes, indexPathname, isLoading, isLog
                         <fb style={{ height: '100%' }}>
                             {routes.map((cRoute, i) => (
                                 <MatchWithSubRoutes
-                                    authIsLoading={route.authIsLoading}
+                                    isLoading={route.isLoading}
                                     isLoggedIn={route.isLoggedIn}
                                     key={i}
                                     {...cRoute}/>
@@ -64,7 +72,7 @@ export const generateRouteMatches = (baseRoutes, indexPathname, isLoading, isLog
             {
                 baseRoutes.map((route, i) => (
                     <MatchWithSubRoutes
-                        authIsLoading={isLoading}
+                        isLoading={isLoading}
                         isLoggedIn={isLoggedIn}
                         key={i}
                         {...route}
