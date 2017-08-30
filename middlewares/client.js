@@ -36,6 +36,9 @@ const client = {
                 }
                 delete result["_id"];
                 return next(null, {
+                    ErrorCode: "0",
+                    InputError: false,
+                    ResultMessage: "Success",
                     Success : true,
                     Result : result
                 });
