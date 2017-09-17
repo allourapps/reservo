@@ -15,7 +15,6 @@ import Icon from 'atoms/icon';
 import colors from 'atoms/colors';
 import Avatar from 'atoms/avatar';
 
-
 import { PopoverAnimationVertical } from 'material-ui/Popover';
 import MenuFlyout from 'molecules/menu-flyout';
 import NavigationSidebar from './navigationSidebar';
