@@ -1,0 +1,148 @@
+@import "./variables";
+@import "./zebra";
+
+// ------------------------------ Defaults ------------------------------
+
+// Backgrounds
+$listitem-background-color: white !default;
+$listitem-background-color-alt: $alt-color !default;
+$listitem-background-color-active: $highlight-color !default;
+$listitem-background-color-hover: #FDFDFD !default;
+$listitem-background-color-disabled: initial !default;
+
+// Font Color
+$listitem-color: $text-color !default;
+$listitem-color-active: white !default;
+$listitem-color-hover: #444 !default;
+$listitem-color-disabled: $listitem-color !default;
+
+// Spacing
+$listitem-padding: 9px 15px !default;
+
+// Font Sizes
+$listitem-font-size-name: 14px !default;
+$listitem-font-size: 10px !default;
+
+$listitem-font-size-name-big: 16px !default;
+$listitem-font-size-big: 12px !default;
+
+// Other
+$listitem-opacity-disabled: 0.5 !default;
+
+// Listitem - Children
+$listitem-img-border-radius: 1px !default;
+$listitem-inner-offset: 6px !default;
+
+$listitem-img-size: 30px !default;
+$listitem-img-size-small: 12px !default;
+$listitem-img-size-large: 48px !default;
+
+$listitem-portrait-factor: (5 / 6) !default;
+$listitem-landscape-factor: (4 / 3) !default;
+
+$listitem-row-border-width: 1px !default;
+$listitem-row-border-color: #f1f1f1 !default;
+
+// ------------------------------ Mixins ------------------------------
+
+@mixin listitem(
+    $color: $listitem-color,
+    $color-active: $listitem-color-active,
+    $color-hover: $listitem-color-hover,
+    $color-disabled: $listitem-color-disabled,
+    $background-color: $listitem-background-color,
+    $background-color-active: $listitem-background-color-active,
+    $background-color-hover: $listitem-background-color-hover,
+    $background-color-disabled: $listitem-background-color-disabled,
+    $background-color-alt: $listitem-background-color-alt,
+    $padding: $listitem-padding,
+    $opacity-disabled: $listitem-opacity-disabled,
+    $img-size: $listitem-img-size,
+    $img-size-small: $listitem-img-size-small,
+    $img-size-large: $listitem-img-size-large,
+    $img-border-radius: $listitem-img-border-radius,
+    $inner-offset: $listitem-inner-offset,
+    $flex-shrink: 0,
+    $border-width: $listitem-row-border-width,
+    $border-color: #f1f1f1
+) {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+
+    color: $color;
+    background-color: $background-color;
+    border-bottom-width: $border-width;
+    border-bottom-color: $border-color;
+    border-bottom-style: solid;
+
+    &:not(.no-zebra) {
+       @include zebra;
+    }
+
+    padding: $padding;
+
+    opacity: 1;
+
+    font-size: $listitem-font-size;
+
+    &:not(.active):not(.disabled) {
+        cursor: pointer;
+        &:hover {
+            color: $color-hover;
+            background-color: $background-color-hover;
+        }
+    }
+
+    &.disabled {
+        color: $color-disabled;
+        cursor: default;
+        background-color: $background-color-disabled;
+        opacity: $opacity-disabled;
+    }
+
+    &.active {
+        color: $color-active;
+        cursor: default;
+        background-color: $background-color-active!important;
+    }
+
+    > * {
+        &:not(:first-child):not(.condense) {
+            margin-left: $inner-offset;
+        }
+
+        &.condense:not(:first-child) {
+            margin-left: $inner-offset * 0.5;
+        }
+
+        &.stretch:not(:first-child) {
+            margin-left: $inner-offset * 2;
+        }
+    }
+
+    name, .name {
+        padding: 1px 0 3px;
+        letter-spacing: .6px;
+        line-height: 1;
+        display: block;
+        font-size: $listitem-font-size-name;
+    }
+
+    desc, .desc {
+        letter-spacing: .6px;
+        line-height: 1;
+        opacity: 0.6;
+        display: block;
+    }
+}
+
+
+
+// ------------------------------ Exports ------------------------------
+
+@include exports(listitem) {
+    listitem, .listitem {
+        @include listitem();
+    }
+}

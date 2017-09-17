@@ -1,0 +1,7 @@
+.directed-popover {
+    overflow: visible !important;
+    // the child of the popover root
+    > div {
+        overflow: visible !important;
+    }
+}

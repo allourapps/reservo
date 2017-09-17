@@ -13,7 +13,10 @@ import Button from 'atoms/button';
 import Text from 'atoms/text';
 import Icon from 'atoms/icon';
 import colors from 'atoms/colors';
+import Avatar from 'atoms/avatar';
 
+import { PopoverAnimationVertical } from 'material-ui/Popover';
+import MenuFlyout from 'molecules/menu-flyout';
 import NavigationSidebar from './navigationSidebar';
 export { UtilityBar } from './utility-bar/index.js';
 export { Title } from './title/index.js';
@@ -108,7 +111,7 @@ const TopBarButton = (props: {route: IRoute, isForSecondLevel?: boolean}) => {
 export default class TopBar extends React.Component<*, ITopbarProps, *> {
     static contextTypes = {
         router: React.PropTypes.object,
-    }
+    };
     /**
     *   @constructor
     */
@@ -117,13 +120,23 @@ export default class TopBar extends React.Component<*, ITopbarProps, *> {
 
         this.state = {
             sidebarNavigationIsOpen: false,
+            flyOutIsOpen: false,
+            flyOutAnchorEl: null,
         };
     }
 
-    render() {
-        const { props } = this;
-        const { location, routes } = props;
+    openPopover = (event) => {
+        event.preventDefault();
+        this.setState({
+            flyOutIsOpen: true,
+            flyOutAnchorEl: event.currentTarget,
+        });
+    }
 
+    render() {
+        const { props, state } = this;
+        const { location, routes, user } = props;
+        console.log(user);
         let firstLevelLinks: Object;
         let secondLevelLinks: Object;
         let secondLevelNavigation: Object;
@@ -192,6 +205,38 @@ export default class TopBar extends React.Component<*, ITopbarProps, *> {
                                     {!activeRouteIsDetailed ? <fb>{props.leftComp}</fb> : BackButton}
                                     {!activeRouteIsDetailed ? <fb>{firstLevelNavigation}</fb> : TitleComponent}
                                     <fb>{props.rightComp}</fb>
+                                    <fb
+                                        onClick={this.openPopover}
+                                        style={{
+                                            padding: '0 1rem',
+                                            flex: '0 0 auto',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        <Avatar
+                                            isPerson
+                                            path={user.PhotoPath}
+                                        />
+                                    </fb>
+                                    <MenuFlyout
+                                        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                                        open={state.flyOutIsOpen}
+                                        anchorEl={state.flyOutAnchorEl}
+                                        onRequestClose={() => this.setState({ flyOutIsOpen: false })}
+                                        animation={PopoverAnimationVertical}
+                                        items={[
+                                            {
+                                                primaryText: 'Logout',
+                                                onClick: props.logOut
+                                            },
+                                            {
+                                                primaryText: 'My Profile',
+                                                onClick: () => {}
+                                            },
+                                        ]}
+                                        divider
+                                    />
                                 </fb>
                                 <Condition has={secondLevelLinks.length || activeRoute && activeRoute.rightTabComponent || activeBaseRoute.rightTabComponent}>
                                     <fb className="secondLevel">

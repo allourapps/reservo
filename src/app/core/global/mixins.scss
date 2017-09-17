@@ -1,0 +1,45 @@
+/* Typography Mixins */
+@mixin font-size($size: medium, $line-height: normal) {
+    $val: map-get($font-size-map, $size);
+    font-size: $val;
+    line-height: $line-height;
+}
+
+@mixin ellipsify {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+@mixin state($state, $default: info) {
+   @if $state == $default {
+	   &, &.#{$state} {
+		   @content;
+	   }
+   }
+   @else {
+	   &.#{$state} {
+		   @content;
+	   }
+   }
+}
+
+@mixin noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+// This browser mixin takes as many browsers as you want to write a fix for!
+// Here are the available names: edge | chrome | firefox | opera | ie | android | ios | safari
+@mixin browsers($browser-list...) {
+    @each $browser in $browser-list {
+        html.#{$browser} & {
+            @content;
+        }
+    }
+}

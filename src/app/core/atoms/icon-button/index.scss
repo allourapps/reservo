@@ -1,0 +1,14 @@
+.icon-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    > div {
+        display: flex;
+        margin: auto;
+    }
+
+    &.raised {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    }
+}

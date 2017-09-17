@@ -19,7 +19,7 @@ export default class Login extends Component {
         this.state = {
             login: '',
             password: ''
-        }
+        };
     }
 
     render() {

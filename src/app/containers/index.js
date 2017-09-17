@@ -34,9 +34,7 @@ const RoutesHandler = connect(mapStateToProps)((props) => {
     return (
         <Router>
             <fb className="grow" style={{ height: '100%' }}>
-                {auth.isLoading ? null :
-                    generateRouteMatches(BaseRoutes, indexPathname, auth.isLoading || false, auth.isLoggedIn || false)
-                }
+                { generateRouteMatches(BaseRoutes, indexPathname, auth.isLoading || false, auth.isLoggedIn || false) }
             </fb>
         </Router>
     );
