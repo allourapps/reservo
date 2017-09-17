@@ -1,0 +1,24 @@
+@import "./variables";
+
+$zebra-alt-color: $alt-color !default;
+$zebra-main-color: $background-color !default;
+
+
+// Include the zebra striping mixin on the parent element
+// e.g. data-grid.zebra -> <row> are striped
+// .zebra -> <listitem> are striped
+
+@mixin zebra {
+    &:nth-of-type(odd) {
+        background: $zebra-alt-color;
+    }
+
+    & ~ :nth-of-type(2n) {
+        background: $zebra-main-color;
+    }
+}
+
+
+.zebra > * {
+    @include zebra;
+}

@@ -1,0 +1,125 @@
+// Imports
+@import "./variables";
+@import "./colors";
+@import "./typography";
+@import "./normalize";
+@import "./scrollbars";
+@import "./list";
+@import "./customTags";
+
+// ----------------------------- Global SCSS --------------------------------- //
+
+// In line with the React concept of modularization, our SCSS mainly affects
+// components. Nonetheless, some general styling, affecting basic elements that aren't components,
+// like <html> or <body>, is included in the UI Library's GLOBAL-folder,
+// namely the file MAIN.scss.
+
+// 1. Set box-sizing globally to handle padding and border widths
+// 2. Prevent iOS and IE text size adjust after device orientation change,
+// without disabling user zoom.
+html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    font-size: $rem-base;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+// Make extra sure we're using the whole window and remove any paddings/margins
+html,
+body {
+    height: 100%;
+    background: $app-color;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+    body, html {
+        font-size: 70%;
+    }
+}
+
+a {
+    color: $primary-color;
+    text-decoration: none;
+
+    .disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    &:hover {
+        color: $secondary-color;
+    }
+
+    &[rel='local'] {
+        color: $secondary-color;
+    }
+}
+
+section {
+    flex: 1 1 auto;
+    padding: 18px 24px 12px;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+    flex: 0 0 auto;
+    padding: $global-padding;
+    display: flex;
+    align-items: center;
+}
+
+// stroke-dasharray is not supported in IE and hides the targeted SVG element -> disable it in IE
+html.ie {
+    .recharts-line-curve {
+        stroke-dasharray: none !important;
+    }
+}
+
+// Helper classes
+.marginBottom {
+    margin-bottom: $global-margin;
+}
+
+.marginTop {
+    margin-top: $global-margin;
+}
+
+.marginLeft {
+    margin-left: $global-margin;
+}
+
+.marginRight {
+    margin-right: $global-margin;
+}
+
+.halfMarginBottom {
+    margin-bottom: $global-margin / 2;
+}
+
+.halfMarginTop {
+    margin-top: $global-margin / 2;
+}
+
+.noGrow {
+    flex-grow: 0;
+}
+.grow {
+    flex-grow: 1;
+}
+.shrink {
+    flex-shrink: 1;
+}
+.noShrink {
+    flex-shrink: 0;
+}

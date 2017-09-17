@@ -1,0 +1,29 @@
+@import '../../global/main';
+
+.menuFlyoutList {
+    padding: 0 !important;
+    > div {
+        padding: 0 !important;
+    }
+    .isActive {
+        background-color: $select-value-bg-color !important;
+    }
+}
+.menuFlyoutListDesktop {
+    padding: 12px 0;
+    .menu-item {
+        &:hover {
+            background-color: lighten($blue-dark, 53) !important;
+            color:  $blue-dark !important;
+        }
+    }
+}
+
+.menuFlyoutList,
+.menuFlyoutListDesktop {
+    .menu-item {
+        &.divider {
+            border-bottom: 1px solid $border-color !important;
+        }
+    }
+}

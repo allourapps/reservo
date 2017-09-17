@@ -1,0 +1,135 @@
+@import "./functions";
+@import "./mixins";
+@import "./colors";
+@import "./variables";
+
+// --- Variables
+$font-size-map: (
+    xsmall: 10px,
+    small: 12px,
+    medium: 14px,
+    large: 16px,
+    xlarge: 18px,
+    xxlarge: 24px,
+    xxxlarge: 32px
+);
+
+$body-font-color: $text-color !default;
+$body-font-weight: $font-weight-normal !default;
+$body-font-style: normal !default;
+
+
+
+// --- Export
+@include exports(typography) {
+
+    body {
+        color: $body-font-color;
+        @include font-size;
+        font-weight: $body-font-weight;
+        font-style: $body-font-style;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p {
+        color: $text-color;
+        margin: 1rem 0;
+        @include font-size(large, $line-height: 1.3);
+    }
+
+    p,
+    span {
+        @each $size in map-keys($font-size-map) {
+            &.#{$size} {
+                @include font-size($size);
+            }
+        }
+    }
+    // Color classes
+    p,
+    span {
+        // generate classes to add state color to text contained in <span>
+        @each $name in $state-and-theme-names {
+            &.#{$name} {
+                $val: map-get($named-colors, $name);
+                color: $val;
+            }
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $primary-color;
+        user-select: none;
+    }
+
+    h1 {
+        @include font-size(xxxlarge);
+        margin: (map-get($font-size-map, xxxlarge) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    h2 {
+        @include font-size(xxlarge);
+        margin: (map-get($font-size-map, xxlarge) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    h3 {
+        @include font-size(xlarge);
+        margin: (map-get($font-size-map, xlarge) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    h4 {
+        @include font-size(large);
+        margin: (map-get($font-size-map, large) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    h5 {
+        @include font-size;
+        margin: (map-get($font-size-map, medium) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    h6 {
+        @include font-size(small);
+        margin: (map-get($font-size-map, small) * 0.25) 0;
+        font-weight: 400;
+    }
+
+    value {
+        @include font-size(large);
+    }
+
+    label {
+        @include font-size(small);
+    }
+
+    code {
+        white-space: pre;
+        font-family: "source-code-pro", monospace;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+    }
+
+    .lowercase {
+        text-transform: lowercase;
+    }
+
+    .capitalize {
+        text-transform: capitalize;
+    }
+
+    .ellipsify {
+        @include ellipsify;
+    }
+
+    pre > code {
+        font-family: "Menlo", "DejaVuSansMono", "source-code-pro", monospace!important;
+        -webkit-font-smoothing: auto!important;
+    }
+}

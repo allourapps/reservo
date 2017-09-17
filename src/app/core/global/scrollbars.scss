@@ -1,0 +1,79 @@
+@import "./functions";
+@import "./colors";
+
+@include exports(scrollbars) {
+    // Chrome
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: lighten($gray, 8);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: $gray;
+    }
+
+    ::-webkit-scrollbar-thumb:horizontal:active {
+        background: lighten($gray, 2);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: lighten($gray-light, 3.5);
+    }
+
+    // Internet Explorer
+    body {
+      scrollbar-face-color: $gray-alt;
+      scrollbar-track-color: $gray-light;
+    }
+
+    .bigHorizontalScroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 1rem 0 1.2rem 0;
+        // adapt padding to higher scrollbars
+        @include browsers(ie) {
+            padding-bottom: 2.5rem;
+        }
+        @include browsers(edge) {
+            padding-bottom: 2rem;
+        }
+        margin-left: -2rem!important;
+        margin-right: -2rem!important;
+        margin-bottom: -1rem!important;
+
+        > :first-child {
+            padding-left: 2rem;
+        }
+        > :last-child {
+            padding-right: 2rem;
+        }
+        &::-webkit-scrollbar {
+            width: 1rem;
+            height: 0.8rem;
+            background-color: transparent!important;
+        }
+        &::-webkit-scrollbar-button {
+            display: block;
+            width: 1rem;
+            height: 0.8rem;
+            background-color: transparent!important;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.04) !important;
+            height: 0.8rem;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.11) !important;
+        }
+        &::-webkit-scrollbar-thumb:horizontal:active {
+            background-color: rgba(0, 0, 0, 0.26) !important;
+        }
+        &::-webkit-scrollbar-corner {
+            background-color: transparent!important;
+        }
+    }
+}

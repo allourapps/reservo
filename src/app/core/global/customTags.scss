@@ -1,0 +1,65 @@
+fb, .fb {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    &.tiny {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    &.grow {
+        flex-grow: 1;
+    }
+    &.noGrow {
+        flex-grow: 0;
+    }
+
+    &.shrink {
+        flex-shrink: 1;
+    }
+
+    &.noShrink {
+        flex-shrink: 0;
+    }
+
+    &.horizontal {
+        flex-direction: row;
+    }
+
+    &.vertical {
+        flex-direction: column;
+    }
+
+    &.jCenter {
+        justify-content: center;
+    }
+
+    &.aCenter {
+        align-items: center;
+    }
+
+    &.jStart {
+        justify-content: flex-start;
+    }
+
+    &.aStart {
+        align-items: flex-start;
+    }
+
+    &.jEnd {
+        justify-content: flex-end;
+    }
+
+    &.aEnd {
+        align-items: flex-end;
+    }
+
+    &.jBetween {
+        justify-content: space-between;
+    }
+
+    &.jAround {
+        justify-content: space-around;
+    }
+}
